@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Votre Site <contact@votredomaine.com>', // À remplacer plus tard
+      from: 'onboarding@resend.dev', // À remplacer plus tard
       to: ['BM.INFO.PARIS@GMAIL.COM'],
       subject: `Nouvelle demande IA - ${offre}`,
       replyTo: email,
