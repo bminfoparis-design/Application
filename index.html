@@ -428,33 +428,26 @@
                 </div>
                 
 
-                <form id="contact-form" class="space-y-4">
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Nom Complet *</label>
-                            <input type="text" name="nom" required placeholder="Ex: Thomas Devaux" class="w-full bg-slate-950 border border-slate-850 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Email Professionnel *</label>
-                            <input type="email" name="email" required placeholder="Ex: t.devaux@entreprise.fr" class="w-full bg-slate-950 border border-slate-850 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Configuration IA sélectionnée</label>
-                        <select name="offre" id="audit-plan" class="w-full bg-slate-950 border border-slate-850 rounded-xl px-4 py-2.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-indigo-500">
-                            <option value="Essential">Essential (3 Agents - Flux standards)</option>
-                            <option value="Performance">Performance (Jusqu'à 7 Agents - Orchestration avancée &amp; Veille)</option>
-                            <option value="Enterprise">Enterprise / Option Souveraineté de Données</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Description succincte de vos flux actuels</label>
-                        <textarea name="message" id="audit-msg" rows="3" placeholder="Nous souhaitons confier la veille tarifaire et l'automatisation de nos processus à une équipe d'agents dédiés..." class="w-full bg-slate-950 border border-slate-850 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-white hover:bg-slate-100 text-slate-950 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-white/5 cursor-pointer">
-                        Soumettre ma demande de réalisation <i class="fa-solid fa-paper-plane text-[10px] ml-1"></i>
-                    </button>
-                </form>
+            <form id="leadForm" onsubmit="submitResendForm(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Nom complet</label>
+                    <input type="text" id="form-nom" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Email professionnel</label>
+                    <input type="email" id="form-email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Votre besoin ou secteur</label>
+                    <textarea id="form-message" rows="3" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-indigo-500" placeholder="Ex: Automatiser mon marketing / Veille concurrentielle retail..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer">
+                    Envoyer ma demande <i class="fa-solid fa-paper-plane ml-1.5 text-[10px]"></i>
+                </button>
+            </form>
+            <div id="formSuccess" class="hidden text-center p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-emerald-400 font-bold">
+                <i class="fa-solid fa-circle-check mr-2"></i> Demande envoyée avec succès ! Notre équipe vous contacte sous 48h.
+            </div>
             </div>
 
             <div id="modal-success-block" class="hidden text-center py-8 space-y-4">
