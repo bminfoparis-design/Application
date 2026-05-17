@@ -702,5 +702,50 @@
             updateDashboard('marketing');
         };
     </script>
+
+    <script>
+  // Ajout de l'envoi du formulaire via fetch vers l'API Vercel
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const nom = form.querySelector('[name="nom"]').value;
+      const email = form.querySelector('[name="email"]').value;
+      const offre = form.querySelector('[name="offre"]').value;
+      const message = form.querySelector('[name="message"]').value;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = 'Envoi en cours...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nom, email, offre, message })
+        });
+        const result = await response.json();
+        if (response.ok) {
+          // Afficher la modale de succès
+          document.getElementById('modal-form-block').classList.add('hidden');
+          document.getElementById('modal-success-block').classList.remove('hidden');
+          form.reset();
+        } else {
+          alert('Erreur : ' + (result.error || 'Échec de l’envoi'));
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Problème de connexion. Veuillez réessayer.');
+      } finally {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  });
+</script>
 </body>
 </html>
